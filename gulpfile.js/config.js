@@ -34,5 +34,18 @@ module.exports = {
     sass: {
         src: src + "/scss/**/*.{sass,scss}",
         dest: dest + "/css"
-    }
+    },
+    browserify: {
+        // A separate bundle will be generated for each
+        // bundle config in the list below
+        bundleConfigs: [{
+            entries: src + '/js/examples/es2015/index.js',
+            transform: [reactify],
+            dest: dest,
+            outputName: 'app.js',
+            cache: {}, 
+            packageCache: {},
+            fullPaths: true
+        }]
+    },
 };

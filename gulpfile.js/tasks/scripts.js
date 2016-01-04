@@ -1,11 +1,11 @@
-var changed    = require('gulp-changed');
-var gulp       = require('gulp');
-var config     = require('../config').scripts;
+var gulp         = require('gulp');
+var sourcemaps   = require("gulp-sourcemaps");
 var browserSync  = require('browser-sync');
+var config       = require('../config').scripts;
 
 gulp.task('scripts', function() {
     return gulp.src(config.src)
-        .pipe(changed(config.dest)) // Ignore unchanged files
+        .pipe(babel({presets: ['es2015']}))
         .pipe(gulp.dest(config.dest))
         .pipe(browserSync.reload({stream:true}));
 });
